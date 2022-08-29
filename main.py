@@ -50,6 +50,11 @@ for x in range(256):
     S_Positive_URL = "C:/Users/Dylan Luo/Documents/MMF data/MMF data/calibdata/" + MMF_Data_List[y]
     S_Positive_URL_Absolute_Path = os.path.abspath(S_Positive_URL)
     S_Positive = cv2.imread(S_Positive_URL_Absolute_Path, cv2.IMREAD_UNCHANGED)
+
+    #S_Negative_Resize = cv2.resize(S_Negative, (100, 100), interpolation = cv2.INTER_LINEAR)
+    #S_Positive_Resize = cv2.resize(S_Positive, (100, 100), interpolation = cv2.INTER_LINEAR)
+    #S_Difference = np.subtract(S_Positive_Resize, S_Negative_Resize)
+    #S_Vector = np.reshape(S_Difference, (10000, 1))
     S_Difference = np.subtract(S_Positive, S_Negative)
     S_Resize = cv2.resize(S_Difference, (100, 100), interpolation = cv2.INTER_LINEAR)
     S_Vector = np.reshape(S_Resize, (10000, 1))
@@ -94,7 +99,7 @@ H_Recover_1_Reshape[H_Recover_1_Reshape < 0.28] = 0
 print("Example Image Recovery 1 \n", H_Recover_1_Reshape)
 print("Shape of Recovered Image 1 \n", H_Recover_1_Reshape.shape)
 
-S_Recover_2_URL = "C:/Users/Dylan Luo/Documents/MMF data/MMF data/calibdata/000388.tif"
+S_Recover_2_URL = "C:/Users/Dylan Luo/Documents/MMF data/MMF data/calibdata/000022.tif"
 S_Recover_2_URL_Absolute_Path = os.path.abspath(S_Recover_2_URL)
 S_Recover_2 = cv2.imread(S_Recover_2_URL_Absolute_Path, cv2.IMREAD_UNCHANGED)
 S_Recover_2_Resize = cv2.resize(S_Recover_2, (100, 100), interpolation = cv2.INTER_LINEAR)
@@ -102,8 +107,8 @@ S_Recover_2_Vector = np.reshape(S_Recover_2_Resize, (10000, 1))
 np.seterr(invalid="ignore")
 H_Recover_2 = np.matmul(np.linalg.pinv(TM), S_Recover_2_Vector)
 H_Recover_2_Reshape = np.reshape(H_Recover_2, (16, 16))
-H_Recover_2_Reshape[H_Recover_2_Reshape >= 0.26] = 1
-H_Recover_2_Reshape[H_Recover_2_Reshape < 0.26] = 0
+H_Recover_2_Reshape[H_Recover_2_Reshape >= 0.28] = 1
+H_Recover_2_Reshape[H_Recover_2_Reshape < 0.28] = 0
 print("Example Image Recovery 2 \n", H_Recover_2_Reshape)
 print("Shape of Recovered Image 2 \n", H_Recover_2_Reshape.shape)
 
@@ -120,9 +125,11 @@ print("Shape of Difference of Two Recovered Images 1 \n", H_Recover_Difference_1
 
 H_New_Split_Test = np.hsplit(H_New, 256)
 H_New_Split_Test_4 = H_New_Split_Test[3]
-H_New_Test_4_Positive_Ideal = (H_New_Split_Test_4 + 1)/2
+#H_New_Test_4_Positive_Ideal = (H_New_Split_Test_4 + 1)/2
+H_New_Test_4_Positive_Ideal = (-H_New_Split_Test_4 + 1)/2
 H_New_Test_4_Positive_Ideal_Reshape = np.reshape(H_New_Test_4_Positive_Ideal, (16, 16))
-H_New_Test_4_Negative_Ideal = (-H_New_Split_Test_4 + 1)/2
+H_New_Test_4_Negative_Ideal = (H_New_Split_Test_4 + 1)/2
+#H_New_Test_4_Negative_Ideal = (-H_New_Split_Test_4 + 1)/2
 H_New_Test_4_Negative_Ideal_Reshape = np.reshape(H_New_Test_4_Negative_Ideal, (16, 16))
 
 print("Positive Ideal Hadamard Matrix \n", H_New_Test_4_Positive_Ideal_Reshape)
@@ -148,20 +155,21 @@ plt.imshow(H_New_Test_4_Positive_Ideal_Reshape)
 plt.show()
 
 # Image Recovery for all the files in the MMF Data Sample Folder
+
 increment_for_loop_2 = 0
 
 for w in range(256):
     H_New_Split = np.hsplit(H_New, 256)
     H_New_Split_Column = H_New_Split[w]
-    H_New_Positive_Ideal = (H_New_Split_Column + 1)/2
-    H_New_Negative_Ideal = (-H_New_Split_Column + 1)/2
+    #H_New_Positive_Ideal = (H_New_Split_Column + 1)/2
+    #H_New_Negative_Ideal = (-H_New_Split_Column + 1)/2
+    H_New_Positive_Ideal = (-H_New_Split_Column + 1)/2
+    H_New_Negative_Ideal = (H_New_Split_Column + 1)/2
     H_New_Positive_Ideal_Reshape = np.reshape(H_New_Positive_Ideal, (16, 16))
     H_New_Negative_Ideal_Reshape = np.reshape(H_New_Negative_Ideal, (16, 16))
     w = w + increment_for_loop_2
     increment_for_loop_2 = increment_for_loop_2 + 1
     z = w + 1
-    a = w + 1
-    b = z + 1
     S_Recover_Negative_URL = "C:/Users/Dylan Luo/Documents/MMF data/MMF data/calibdata/" + MMF_Data_List[w]
     S_Recover_Negative_URL_Absolute_Path = os.path.abspath(S_Recover_Negative_URL)
     S_Recover_Negative = cv2.imread(S_Recover_Negative_URL_Absolute_Path, cv2.IMREAD_UNCHANGED)
@@ -171,8 +179,8 @@ for w in range(256):
     H_Recover_Negative = np.matmul(np.linalg.pinv(TM), S_Recover_Negative_Vector)
     np.seterr(invalid="ignore")
     H_Recover_Negative_Reshape = np.reshape(H_Recover_Negative, (16, 16))
-    H_Recover_Negative_Reshape[H_Recover_Negative_Reshape >= 0.28] = 1
-    H_Recover_Negative_Reshape[H_Recover_Negative_Reshape < 0.28] = 0
+    H_Recover_Negative_Reshape[H_Recover_Negative_Reshape >= 0.34] = 1
+    H_Recover_Negative_Reshape[H_Recover_Negative_Reshape < 0.34] = 0
 
     S_Recover_Positive_URL = "C:/Users/Dylan Luo/Documents/MMF data/MMF data/calibdata/" + MMF_Data_List[z]
     S_Recover_Positive_URL_Absolute_Path = os.path.abspath(S_Recover_Positive_URL)
@@ -183,12 +191,12 @@ for w in range(256):
     H_Recover_Positive = np.matmul(np.linalg.pinv(TM), S_Recover_Positive_Vector)
     np.seterr(invalid="ignore")
     H_Recover_Positive_Reshape = np.reshape(H_Recover_Positive, (16, 16))
-    H_Recover_Positive_Reshape[H_Recover_Negative_Reshape >= 0.28] = 1
-    H_Recover_Positive_Reshape[H_Recover_Positive_Reshape < 0.28] = 0
+    H_Recover_Positive_Reshape[H_Recover_Positive_Reshape >= 0.34] = 1
+    H_Recover_Positive_Reshape[H_Recover_Positive_Reshape < 0.34] = 0
 
-    Save_File_Negative_URL = "C:/Users/Dylan Luo/Documents/MMF data/MMF data/Recovered Images/Recovered Image " + str(a) + ".png"
+    Save_File_Negative_URL = "C:/Users/Dylan Luo/Documents/MMF data/MMF data/Recovered Images/Recovered Image " + str(w + 1) + ".png"
     Save_File_Negative_URl_Absolute_Path = os.path.abspath(Save_File_Negative_URL)
-    Save_File_Positive_URL = "C:/Users/Dylan Luo/Documents/MMF data/MMF data/Recovered Images/Recovered Image " + str(b) + ".png"
+    Save_File_Positive_URL = "C:/Users/Dylan Luo/Documents/MMF data/MMF data/Recovered Images/Recovered Image " + str(z + 1) + ".png"
     Save_File_Positive_URl_Absolute_Path = os.path.abspath(Save_File_Positive_URL)
     plt.subplot(121)
     plt.title("Recovered Image (Negative)")
@@ -197,6 +205,7 @@ for w in range(256):
     plt.title("Ideal Negative Image Input")
     plt.imshow(H_New_Negative_Ideal_Reshape)
     plt.savefig(Save_File_Negative_URl_Absolute_Path)
+
     plt.subplot(121)
     plt.title("Recovered Image (Positive)")
     plt.imshow(H_Recover_Positive_Reshape)
@@ -204,6 +213,7 @@ for w in range(256):
     plt.title("Ideal Positive Image Input")
     plt.imshow(H_New_Positive_Ideal_Reshape)
     plt.savefig(Save_File_Positive_URl_Absolute_Path)
+
 
 
 #cv2 imshow function to show the speckle pattern
