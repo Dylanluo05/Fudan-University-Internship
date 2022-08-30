@@ -86,7 +86,7 @@ print("Shape of Transmission Matrix \n", TM.shape)
 
 #Finding the psuedo-inverse of TM then multiplying it with a speckle pattern is faster than dividing the transmission matrix from the speckle pattern.
 #The different algorithm run times for np.matmul and np.divide are proof of the statement above.
-S_Recover_1_URL = "C:/Users/Dylan Luo/Documents/MMF data/MMF data/calibdata/000021.tif"
+S_Recover_1_URL = "C:/Users/Dylan Luo/Documents/MMF data/MMF data/calibdata/000001.tif"
 S_Recover_1_URL_Absolute_Path = os.path.abspath(S_Recover_1_URL)
 S_Recover_1 = cv2.imread(S_Recover_1_URL_Absolute_Path, cv2.IMREAD_UNCHANGED)
 S_Recover_1_Resize = cv2.resize(S_Recover_1, (100, 100), interpolation = cv2.INTER_LINEAR)
@@ -99,7 +99,7 @@ H_Recover_1_Reshape[H_Recover_1_Reshape < 0.28] = 0
 print("Example Image Recovery 1 \n", H_Recover_1_Reshape)
 print("Shape of Recovered Image 1 \n", H_Recover_1_Reshape.shape)
 
-S_Recover_2_URL = "C:/Users/Dylan Luo/Documents/MMF data/MMF data/calibdata/000022.tif"
+S_Recover_2_URL = "C:/Users/Dylan Luo/Documents/MMF data/MMF data/calibdata/000002.tif"
 S_Recover_2_URL_Absolute_Path = os.path.abspath(S_Recover_2_URL)
 S_Recover_2 = cv2.imread(S_Recover_2_URL_Absolute_Path, cv2.IMREAD_UNCHANGED)
 S_Recover_2_Resize = cv2.resize(S_Recover_2, (100, 100), interpolation = cv2.INTER_LINEAR)
@@ -122,18 +122,17 @@ print("Example Difference of Two Image Recoveries 1 \n", H_Recover_Difference_1_
 print("Shape of Difference of Two Recovered Images 1 \n", H_Recover_Difference_1_Reshape.shape)
 
 #Finding an ideal image matrix input
-
 H_New_Split_Test = np.hsplit(H_New, 256)
-H_New_Split_Test_4 = H_New_Split_Test[3]
-#H_New_Test_4_Positive_Ideal = (H_New_Split_Test_4 + 1)/2
-H_New_Test_4_Positive_Ideal = (-H_New_Split_Test_4 + 1)/2
-H_New_Test_4_Positive_Ideal_Reshape = np.reshape(H_New_Test_4_Positive_Ideal, (16, 16))
-H_New_Test_4_Negative_Ideal = (H_New_Split_Test_4 + 1)/2
-#H_New_Test_4_Negative_Ideal = (-H_New_Split_Test_4 + 1)/2
-H_New_Test_4_Negative_Ideal_Reshape = np.reshape(H_New_Test_4_Negative_Ideal, (16, 16))
+H_New_Split_Test_1 = H_New_Split_Test[0]
+#H_New_Test_1_Positive_Ideal = (H_New_Split_Test_1 + 1)/2
+H_New_Test_1_Positive_Ideal = (H_New_Split_Test_1 + 1)/2
+H_New_Test_1_Positive_Ideal_Reshape = np.reshape(H_New_Test_1_Positive_Ideal, (16, 16))
+H_New_Test_1_Negative_Ideal = (-H_New_Split_Test_1 + 1)/2
+#H_New_Test_1_Negative_Ideal = (-H_New_Split_Test_1 + 1)/2
+H_New_Test_1_Negative_Ideal_Reshape = np.reshape(H_New_Test_1_Negative_Ideal, (16, 16))
 
-print("Positive Ideal Hadamard Matrix \n", H_New_Test_4_Positive_Ideal_Reshape)
-print("Shape of Positive Ideal Hadamard Matrix \n", H_New_Test_4_Positive_Ideal_Reshape.shape)
+print("Positive Ideal Hadamard Matrix \n", H_New_Test_1_Positive_Ideal_Reshape)
+print("Shape of Positive Ideal Hadamard Matrix \n", H_New_Test_1_Positive_Ideal_Reshape.shape)
 
 #Plot the recovered image and the ideal hadamard matrix input sample using matplot
 
@@ -143,7 +142,7 @@ plt.title("Recovered Test Image 1")
 plt.imshow(H_Recover_1_Reshape)
 plt.subplot(122)
 plt.title("Ideal Negative Image Input")
-plt.imshow(H_New_Test_4_Negative_Ideal_Reshape)
+plt.imshow(H_New_Test_1_Negative_Ideal_Reshape)
 plt.show()
 
 plt.subplot(121)
@@ -151,18 +150,20 @@ plt.title("Recovered Test Image 2")
 plt.imshow(H_Recover_2_Reshape)
 plt.subplot(122)
 plt.title("Ideal Positive Image Input")
-plt.imshow(H_New_Test_4_Positive_Ideal_Reshape)
+plt.imshow(H_New_Test_1_Positive_Ideal_Reshape)
 plt.show()
 
 # Image Recovery for all the files in the MMF Data Sample Folder
 
 increment_for_loop_2 = 0
+accuracy_matrix = []
 
 for w in range(256):
     H_New_Split = np.hsplit(H_New, 256)
     H_New_Split_Column = H_New_Split[w]
     #H_New_Positive_Ideal = (H_New_Split_Column + 1)/2
     #H_New_Negative_Ideal = (-H_New_Split_Column + 1)/2
+    # Strange phenomenon that is happening with the ideal matrices: The negative algorithm seems to fit the positive ideal hadamard matrix, while the positive algorithm seems to fit the negative ideal hadamard matrix.
     H_New_Positive_Ideal = (-H_New_Split_Column + 1)/2
     H_New_Negative_Ideal = (H_New_Split_Column + 1)/2
     H_New_Positive_Ideal_Reshape = np.reshape(H_New_Positive_Ideal, (16, 16))
@@ -182,6 +183,14 @@ for w in range(256):
     H_Recover_Negative_Reshape[H_Recover_Negative_Reshape >= 0.34] = 1
     H_Recover_Negative_Reshape[H_Recover_Negative_Reshape < 0.34] = 0
 
+    accuracy_count_negative = 0
+
+    for u in range(len(H_Recover_Negative_Reshape)):
+        for v in range(len(H_Recover_Negative_Reshape[u])):
+            if H_Recover_Negative_Reshape[u][v] == H_New_Negative_Ideal_Reshape[u][v]:
+                accuracy_count_negative = accuracy_count_negative + 1
+    accuracy_matrix.append(accuracy_count_negative)
+
     S_Recover_Positive_URL = "C:/Users/Dylan Luo/Documents/MMF data/MMF data/calibdata/" + MMF_Data_List[z]
     S_Recover_Positive_URL_Absolute_Path = os.path.abspath(S_Recover_Positive_URL)
     S_Recover_Positive = cv2.imread(S_Recover_Positive_URL_Absolute_Path, cv2.IMREAD_UNCHANGED)
@@ -194,6 +203,13 @@ for w in range(256):
     H_Recover_Positive_Reshape[H_Recover_Positive_Reshape >= 0.34] = 1
     H_Recover_Positive_Reshape[H_Recover_Positive_Reshape < 0.34] = 0
 
+    accuracy_count_positive = 0
+
+    for u in range(len(H_Recover_Positive_Reshape)):
+        for v in range(len(H_Recover_Positive_Reshape[u])):
+            if H_Recover_Positive_Reshape[u][v] == H_New_Positive_Ideal_Reshape[u][v]:
+                accuracy_count_positive = accuracy_count_positive + 1
+    accuracy_matrix.append(accuracy_count_positive)
     Save_File_Negative_URL = "C:/Users/Dylan Luo/Documents/MMF data/MMF data/Recovered Images/Recovered Image " + str(w + 1) + ".png"
     Save_File_Negative_URl_Absolute_Path = os.path.abspath(Save_File_Negative_URL)
     Save_File_Positive_URL = "C:/Users/Dylan Luo/Documents/MMF data/MMF data/Recovered Images/Recovered Image " + str(z + 1) + ".png"
@@ -214,7 +230,31 @@ for w in range(256):
     plt.imshow(H_New_Positive_Ideal_Reshape)
     plt.savefig(Save_File_Positive_URl_Absolute_Path)
 
+    #Save_Accuracy_File_Negative_URL = "C:/Users/Dylan Luo/Documents/MMF data/MMF data/Image Accuracy/Accuracy of Image " + str(w + 1) + ".txt"
+    #Save_Accuracy_File_Negative_URL_Absolute_Path = os.path.abspath(Save_Accuracy_File_Negative_URL)
+    #Save_Accuracy_File_Positive_URL = "C:/Users/Dylan Luo/Documents/MMF data/MMF data/Image Accuracy/Accuracy of Image " + str(z + 1) + ".txt"
+    #Save_Accuracy_File_Positive_URL_Absolute_Path = os.path.abspath(Save_Accuracy_File_Positive_URL)
 
+    #Accuracy_Path_Negative = open(Save_Accuracy_File_Negative_URL_Absolute_Path, "a")
+    #Accuracy_Path_Negative.write(str(accuracy_count_negative))
+    #Accuracy_Path_Negative.close()
+
+    #Accuracy_Path_Positive = open(Save_Accuracy_File_Positive_URL_Absolute_Path, "a")
+    #Accuracy_Path_Positive.write(str(accuracy_count_positive))
+    #Accuracy_Path_Positive.close()
+
+accuracy_percentage_matrix = []
+
+for j in range(len(accuracy_matrix)):
+    percent_error = abs((int(accuracy_matrix[j]) - 256)/256) * 100
+    accuracy_percentage_matrix.append(percent_error)
+
+Save_Accuracy_URL = "C:/Users/Dylan Luo/Documents/MMF data/MMF data/Recovered Images/Image Accuracies.txt"
+Save_Accuracy_URL_Absolute_Path = os.path.abspath(Save_Accuracy_URL)
+Accuracy_Write = open(Save_Accuracy_URL_Absolute_Path, "a")
+Accuracy_Write.write(str(accuracy_matrix))
+Accuracy_Write.write("\n \n" + str(accuracy_percentage_matrix))
+Accuracy_Write.close()
 
 #cv2 imshow function to show the speckle pattern
 
