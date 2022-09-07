@@ -8,7 +8,7 @@ import os
 
 #Success Percentage Calculation
 """
-percent_error_array = [100.0, 100.0, 5.46875, 6.640625, 4.6875, 4.296875, 3.125, 6.640625, 8.203125, 8.203125, 3.125, 5.078125, 8.59375, 7.421875, 7.03125, 5.078125, 7.421875, 8.984375, 5.46875, 7.03125, 5.078125, 6.25, 5.078125, 5.078125, 10.9375, 8.203125, 7.421875, 6.640625, 7.03125, 6.640625, 6.25, 5.078125, 10.546875, 5.46875, 3.90625, 6.640625, 4.6875, 5.46875, 6.640625, 6.640625, 5.46875, 4.6875, 3.515625, 3.125, 2.34375, 7.03125, 5.859375, 4.6875, 5.859375, 8.203125, 4.296875, 5.859375, 5.46875, 5.859375, 4.296875, 6.640625, 7.03125, 4.6875, 2.34375, 4.6875, 4.6875, 6.25, 4.296875, 7.421875, 6.25, 4.6875, 2.34375, 4.296875, 4.296875, 7.03125, 5.078125, 6.25, 7.421875, 6.25, 5.078125, 5.46875, 5.46875, 6.640625, 5.859375, 6.640625, 8.203125, 7.03125, 4.6875, 3.90625, 4.296875, 6.25, 6.640625, 5.46875, 7.03125, 7.421875, 5.078125, 4.296875, 5.46875, 7.03125, 6.640625, 5.859375, 3.515625, 7.03125, 4.296875, 5.078125, 5.859375, 5.859375, 6.640625, 4.6875, 3.90625, 8.984375, 3.90625, 5.078125, 3.515625, 8.59375, 5.078125, 6.25, 7.8125, 5.46875, 4.6875, 8.59375, 7.421875, 5.46875, 4.296875, 4.6875, 5.46875, 6.640625, 3.515625, 3.90625, 7.8125, 7.421875, 5.859375, 3.90625, 10.546875, 3.90625, 5.46875, 5.859375, 7.8125, 7.03125, 5.859375, 6.640625, 5.078125, 3.90625, 3.90625, 5.078125, 8.203125, 5.078125, 5.078125, 5.078125, 9.765625, 7.8125, 4.6875, 7.03125, 5.078125, 7.421875, 4.6875, 5.859375, 4.6875, 10.546875, 3.125, 5.46875, 6.25, 7.03125, 1.953125, 7.421875, 6.640625, 7.03125, 3.125, 4.6875, 2.734375, 4.296875, 4.6875, 5.859375, 5.078125, 5.46875, 7.03125, 4.296875, 5.078125, 6.25, 5.46875, 4.6875, 7.8125, 7.03125, 3.125, 5.46875, 4.6875, 5.859375, 4.296875, 5.46875, 5.078125, 5.46875, 4.6875, 7.03125, 4.296875, 5.46875, 2.734375, 5.078125, 9.765625, 6.25, 5.859375, 5.859375, 5.859375, 8.203125, 5.078125, 6.640625, 8.203125, 5.859375, 5.46875, 5.46875, 7.8125, 6.640625, 3.515625, 5.078125, 5.078125, 7.421875, 3.90625, 4.296875, 9.765625, 6.640625, 4.6875, 6.25, 8.203125, 4.6875, 3.515625, 5.859375, 5.859375, 7.421875, 5.859375, 5.46875, 5.46875, 5.078125, 4.296875, 4.296875, 5.078125, 6.640625, 4.296875, 7.8125, 6.640625, 8.59375, 5.078125, 6.25, 7.03125, 5.859375, 8.203125, 5.859375, 4.296875, 6.25, 3.515625, 3.90625, 7.421875, 8.203125, 5.46875, 5.859375, 6.640625, 3.125, 4.296875, 4.6875, 5.078125, 5.46875, 4.296875, 5.078125, 10.15625, 5.078125, 5.46875, 6.25, 6.25, 5.46875, 5.46875, 6.25, 6.25, 6.25, 5.859375, 8.203125, 3.515625, 9.375, 3.90625, 5.078125, 20.3125, 13.28125, 4.296875, 5.859375, 5.46875, 5.078125, 4.6875, 7.8125, 8.59375, 10.15625, 4.6875, 9.765625, 6.640625, 8.984375, 5.46875, 5.859375, 5.46875, 7.03125, 1.953125, 1.953125, 4.6875, 7.421875, 5.859375, 6.25, 4.6875, 4.296875, 4.6875, 3.515625, 5.46875, 5.859375, 2.734375, 5.46875, 6.25, 6.25, 2.734375, 4.6875, 3.515625, 4.6875, 6.25, 5.46875, 7.03125, 6.25, 5.859375, 6.25, 5.46875, 5.859375, 3.515625, 4.6875, 15.234375, 7.421875, 3.90625, 4.296875, 5.859375, 5.46875, 3.515625, 6.25, 6.25, 7.8125, 3.125, 6.25, 4.296875, 7.421875, 3.515625, 5.859375, 5.859375, 7.8125, 4.6875, 5.859375, 2.734375, 6.640625, 3.515625, 5.859375, 3.515625, 8.203125, 3.515625, 5.078125, 3.90625, 7.8125, 4.6875, 5.46875, 7.03125, 4.6875, 5.078125, 5.46875, 5.46875, 7.8125, 5.078125, 6.25, 5.078125, 5.078125, 4.6875, 4.6875, 4.6875, 5.859375, 6.640625, 6.640625, 6.25, 7.03125, 3.90625, 5.46875, 5.078125, 8.203125, 5.078125, 6.640625, 8.203125, 5.078125, 3.90625, 5.078125, 5.078125, 7.8125, 3.125, 6.25, 23.046875, 20.3125, 3.90625, 4.6875, 3.90625, 4.296875, 5.46875, 6.640625, 9.765625, 5.46875, 6.25, 7.421875, 8.203125, 6.25, 3.515625, 5.078125, 7.03125, 7.03125, 4.296875, 5.078125, 3.90625, 7.03125, 4.296875, 4.6875, 5.46875, 6.640625, 5.46875, 5.078125, 5.46875, 7.03125, 3.90625, 5.859375, 8.59375, 7.421875, 2.34375, 6.25, 5.46875, 8.984375, 2.34375, 6.640625, 6.640625, 6.25, 3.125, 5.078125, 5.859375, 10.15625, 3.90625, 4.6875, 3.515625, 7.03125, 5.46875, 5.078125, 6.640625, 6.640625, 7.03125, 7.421875, 6.640625, 7.03125, 4.6875, 4.6875, 5.46875, 6.640625, 5.078125, 4.6875, 7.8125, 8.984375, 4.296875, 6.25, 6.25, 3.90625, 4.6875, 5.078125, 7.421875, 7.03125, 6.25, 5.46875, 5.46875, 8.203125, 7.421875, 5.859375, 5.46875, 6.25, 5.859375, 6.25, 5.859375, 5.859375, 7.421875, 5.46875, 7.8125, 8.203125, 3.90625, 5.46875, 7.03125, 8.203125, 5.859375, 5.46875, 5.46875, 6.25, 2.734375, 5.078125, 5.078125, 7.421875, 4.6875, 5.078125, 4.296875, 6.25, 4.296875, 7.8125, 3.515625, 5.46875, 4.296875, 6.25, 7.8125, 7.03125, 3.515625, 5.078125, 3.515625, 7.421875, 6.25, 5.46875, 4.6875, 5.859375, 4.296875, 5.859375, 6.25, 5.859375, 6.25, 5.46875]
+percent_error_array = [100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0]
 success_array = []
 
 for q in range(len(percent_error_array)):
@@ -34,11 +34,39 @@ Success_Failure_Write.write("\n \n" + str(success_failure_array))
 Success_Failure_Write.close()
 """
 
+"""
+percent_error_array_threshed = [100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0]
+success_array_threshed = []
+
+for q in range(len(percent_error_array_threshed)):
+    if percent_error_array_threshed[q] <= 5:
+        success_array_threshed.append(percent_error_array_threshed[q])
+print("Number of successful image recoveries (On the basis that the acceptable percent error is 5% and under) \n" + str(len(success_array)))
+
+
+success_failure_array_threshed = []
+for p in range(len(percent_error_array_threshed)):
+    if percent_error_array_threshed[p] <= 5:
+        success_failure_threshed = "success"
+    else:
+        success_failure_threshed = "failure"
+    success_failure_array_threshed.append(success_failure_threshed)
+
+Success_Failure_URL_Threshed = "C:/Users/Dylan Luo/Documents/MMF data/MMF data/Recovered Images - Threshed/Image Accuracies (Threshed).txt"
+Success_Failure_URL_Absolute_Path_Threshed = os.path.abspath(Success_Failure_URL_Threshed)
+Success_Failure_Write_Threshed = open(Success_Failure_URL_Absolute_Path_Threshed, "a")
+Success_Failure_Write_Threshed.write("\n \n" + str(success_array_threshed))
+Success_Failure_Write_Threshed.write("\n" + str(len(success_array_threshed)))
+Success_Failure_Write_Threshed.write("\n \n" + str(success_failure_array_threshed))
+Success_Failure_Write_Threshed.close()
+"""
+
 #Prove TM * Hln = Sln
 
 S_3_URL = "C:/Users/Dylan Luo/Documents/MMF data/MMF data/calibdata/000003.tif"
 S_3_URL_Absolute_Path = os.path.abspath(S_3_URL)
 S_3 = cv2.imread(S_3_URL_Absolute_Path, cv2.IMREAD_UNCHANGED)
+S_3 = S_3.astype("float64")
 S_3_Resize = cv2.resize(S_3, (100, 100), interpolation = cv2.INTER_LINEAR)
 S_3_Vector = np.reshape(S_3_Resize, (10000, 1))
 print("Speckle Pattern 3 \n", S_3_Vector)
@@ -47,6 +75,7 @@ print("Shape of Speckle Pattern 3 \n", S_3_Vector.shape)
 S_4_URL = "C:/Users/Dylan Luo/Documents/MMF data/MMF data/calibdata/000004.tif"
 S_4_URL_Absolute_Path = os.path.abspath(S_4_URL)
 S_4 = cv2.imread(S_4_URL_Absolute_Path, cv2.IMREAD_UNCHANGED)
+S_4 = S_4.astype("float64")
 S_4_Resize = cv2.resize(S_4, (100, 100), interpolation = cv2.INTER_LINEAR)
 S_4_Vector = np.reshape(S_4_Resize, (10000, 1))
 print("Speckle Pattern 4 \n", S_4_Vector)
@@ -75,9 +104,12 @@ for x in range(256):
     S_Negative_URL = "C:/Users/Dylan Luo/Documents/MMF data/MMF data/calibdata/" + MMF_Data_List[x]
     S_Negative_URL_Absolute_Path = os.path.abspath(S_Negative_URL)
     S_Negative = cv2.imread(S_Negative_URL_Absolute_Path, cv2.IMREAD_UNCHANGED)
+    S_Negative = S_Negative.astype("float64")
+
     S_Positive_URL = "C:/Users/Dylan Luo/Documents/MMF data/MMF data/calibdata/" + MMF_Data_List[y]
     S_Positive_URL_Absolute_Path = os.path.abspath(S_Positive_URL)
     S_Positive = cv2.imread(S_Positive_URL_Absolute_Path, cv2.IMREAD_UNCHANGED)
+    S_Positive = S_Positive.astype("float64")
 
     #S_Negative_Resize = cv2.resize(S_Negative, (100, 100), interpolation = cv2.INTER_LINEAR)
     #S_Positive_Resize = cv2.resize(S_Positive, (100, 100), interpolation = cv2.INTER_LINEAR)
@@ -106,7 +138,7 @@ print("Shape of Order 256 Hadamard Matrix \n", H_New.shape)
 
 # H_New.transpose()/16 is the same as np.linalg.inv(H_New).
 # This is why Hadamard Matrices are useful for finding the Transmission Matrix
-TM = np.matmul(S_New, H_New.transpose()/256)
+TM = np.matmul(S_New, (H_New.transpose()/256))
 print("Transmission Matrix \n", TM)
 print("Shape of Transmission Matrix \n", TM.shape)
 
@@ -114,29 +146,31 @@ print("Shape of Transmission Matrix \n", TM.shape)
 
 #Finding the psuedo-inverse of TM then multiplying it with a speckle pattern is faster than dividing the transmission matrix from the speckle pattern.
 #The different algorithm run times for np.matmul and np.divide are proof of the statement above.
-S_Recover_1_URL = "C:/Users/Dylan Luo/Documents/MMF data/MMF data/calibdata/000001.tif"
+S_Recover_1_URL = "C:/Users/Dylan Luo/Documents/MMF data/MMF data/calibdata/000025.tif"
 S_Recover_1_URL_Absolute_Path = os.path.abspath(S_Recover_1_URL)
 S_Recover_1 = cv2.imread(S_Recover_1_URL_Absolute_Path, cv2.IMREAD_UNCHANGED)
+S_Recover_1 = S_Recover_1.astype("float64")
 S_Recover_1_Resize = cv2.resize(S_Recover_1, (100, 100), interpolation = cv2.INTER_LINEAR)
 S_Recover_1_Vector = np.reshape(S_Recover_1_Resize, (10000, 1))
 np.seterr(invalid="ignore")
 H_Recover_1 = np.matmul(np.linalg.pinv(TM), S_Recover_1_Vector)
 H_Recover_1_Reshape = np.reshape(H_Recover_1, (16, 16))
-H_Recover_1_Reshape[H_Recover_1_Reshape >= 0.28] = 1
-H_Recover_1_Reshape[H_Recover_1_Reshape < 0.28] = 0
+H_Recover_1_Reshape[H_Recover_1_Reshape >= 0.50] = 1
+H_Recover_1_Reshape[H_Recover_1_Reshape < 0.50] = 0
 print("Example Image Recovery 1 \n", H_Recover_1_Reshape)
 print("Shape of Recovered Image 1 \n", H_Recover_1_Reshape.shape)
 
-S_Recover_2_URL = "C:/Users/Dylan Luo/Documents/MMF data/MMF data/calibdata/000002.tif"
+S_Recover_2_URL = "C:/Users/Dylan Luo/Documents/MMF data/MMF data/calibdata/000026.tif"
 S_Recover_2_URL_Absolute_Path = os.path.abspath(S_Recover_2_URL)
 S_Recover_2 = cv2.imread(S_Recover_2_URL_Absolute_Path, cv2.IMREAD_UNCHANGED)
+S_Recover_2 = S_Recover_2.astype("float64")
 S_Recover_2_Resize = cv2.resize(S_Recover_2, (100, 100), interpolation = cv2.INTER_LINEAR)
 S_Recover_2_Vector = np.reshape(S_Recover_2_Resize, (10000, 1))
 np.seterr(invalid="ignore")
 H_Recover_2 = np.matmul(np.linalg.pinv(TM), S_Recover_2_Vector)
 H_Recover_2_Reshape = np.reshape(H_Recover_2, (16, 16))
-H_Recover_2_Reshape[H_Recover_2_Reshape >= 0.28] = 1
-H_Recover_2_Reshape[H_Recover_2_Reshape < 0.28] = 0
+H_Recover_2_Reshape[H_Recover_2_Reshape >= 0.50] = 1
+H_Recover_2_Reshape[H_Recover_2_Reshape < 0.50] = 0
 print("Example Image Recovery 2 \n", H_Recover_2_Reshape)
 print("Shape of Recovered Image 2 \n", H_Recover_2_Reshape.shape)
 
@@ -151,12 +185,10 @@ print("Shape of Difference of Two Recovered Images 1 \n", H_Recover_Difference_1
 
 #Finding an ideal image matrix input
 H_New_Split_Test = np.hsplit(H_New, 256)
-H_New_Split_Test_1 = H_New_Split_Test[0]
-#H_New_Test_1_Positive_Ideal = (H_New_Split_Test_1 + 1)/2
+H_New_Split_Test_1 = H_New_Split_Test[12]
 H_New_Test_1_Positive_Ideal = (H_New_Split_Test_1 + 1)/2
 H_New_Test_1_Positive_Ideal_Reshape = np.reshape(H_New_Test_1_Positive_Ideal, (16, 16))
 H_New_Test_1_Negative_Ideal = (-H_New_Split_Test_1 + 1)/2
-#H_New_Test_1_Negative_Ideal = (-H_New_Split_Test_1 + 1)/2
 H_New_Test_1_Negative_Ideal_Reshape = np.reshape(H_New_Test_1_Negative_Ideal, (16, 16))
 
 print("Positive Ideal Hadamard Matrix \n", H_New_Test_1_Positive_Ideal_Reshape)
@@ -183,17 +215,102 @@ plt.show()
 
 # Image Recovery for all the files in the MMF Data Sample Folder
 
+increment_for_loop_3 = 0
+accuracy_matrix_threshed = []
+
+for w in range(256):
+    H_New_Split_Threshed = np.hsplit(H_New, 256)
+    H_New_Split_Column_Threshed = H_New_Split_Threshed[w]
+    H_New_Positive_Ideal_Threshed = (H_New_Split_Column_Threshed + 1)/2
+    H_New_Negative_Ideal_Threshed = (-H_New_Split_Column_Threshed + 1)/2
+    H_New_Positive_Ideal_Reshape_Threshed = np.reshape(H_New_Positive_Ideal_Threshed, (16, 16))
+    H_New_Negative_Ideal_Reshape_Threshed = np.reshape(H_New_Negative_Ideal_Threshed, (16, 16))
+    w = w + increment_for_loop_3
+    increment_for_loop_3 = increment_for_loop_3 + 1
+    z = w + 1
+    S_Recover_Negative_URL_Threshed = "C:/Users/Dylan Luo/Documents/MMF data/MMF data/calibdata/" + MMF_Data_List[w]
+    S_Recover_Negative_URL_Absolute_Path_Threshed = os.path.abspath(S_Recover_Negative_URL_Threshed)
+    S_Recover_Negative_Threshed = cv2.imread(S_Recover_Negative_URL_Absolute_Path_Threshed, cv2.IMREAD_UNCHANGED)
+    S_Recover_Negative_Threshed = S_Recover_Negative_Threshed.astype("float64")
+    S_Recover_Negative_Resize_Threshed = cv2.resize(S_Recover_Negative_Threshed, (100, 100), interpolation = cv2.INTER_LINEAR)
+    S_Recover_Negative_Vector_Threshed = np.reshape(S_Recover_Negative_Resize_Threshed, (10000, 1))
+
+    H_Recover_Negative_Threshed = np.matmul(np.linalg.pinv(TM), S_Recover_Negative_Vector_Threshed)
+    np.seterr(invalid="ignore")
+    H_Recover_Negative_Reshape_Threshed = np.reshape(H_Recover_Negative_Threshed, (16, 16))
+    H_Recover_Negative_Reshape_Threshed[H_Recover_Negative_Reshape_Threshed >= 0.50] = 1
+    H_Recover_Negative_Reshape_Threshed[H_Recover_Negative_Reshape_Threshed < 0.50] = 0
+
+    accuracy_count_negative_threshed = 0
+
+    for u in range(len(H_Recover_Negative_Reshape_Threshed)):
+        for v in range(len(H_Recover_Negative_Reshape_Threshed[u])):
+            if H_Recover_Negative_Reshape_Threshed[u][v] == H_New_Negative_Ideal_Reshape_Threshed[u][v]:
+                accuracy_count_negative = accuracy_count_negative_threshed + 1
+    accuracy_matrix_threshed.append(accuracy_count_negative_threshed)
+
+    S_Recover_Positive_URL_Threshed = "C:/Users/Dylan Luo/Documents/MMF data/MMF data/calibdata/" + MMF_Data_List[z]
+    S_Recover_Positive_URL_Absolute_Path_Threshed = os.path.abspath(S_Recover_Positive_URL_Threshed)
+    S_Recover_Positive_Threshed = cv2.imread(S_Recover_Positive_URL_Absolute_Path_Threshed, cv2.IMREAD_UNCHANGED)
+    S_Recover_Positive_Threshed = S_Recover_Positive_Threshed.astype("float64")
+    S_Recover_Positive_Resize_Threshed = cv2.resize(S_Recover_Positive_Threshed, (100, 100), interpolation = cv2.INTER_LINEAR)
+    S_Recover_Positive_Vector_Threshed = np.reshape(S_Recover_Positive_Resize_Threshed, (10000, 1))
+
+    H_Recover_Positive_Threshed = np.matmul(np.linalg.pinv(TM), S_Recover_Positive_Vector_Threshed)
+    np.seterr(invalid="ignore")
+    H_Recover_Positive_Reshape_Threshed = np.reshape(H_Recover_Positive_Threshed, (16, 16))
+    H_Recover_Positive_Reshape_Threshed[H_Recover_Positive_Reshape_Threshed >= 0.50] = 1
+    H_Recover_Positive_Reshape_Threshed[H_Recover_Positive_Reshape_Threshed < 0.50] = 0
+
+    accuracy_count_positive_threshed = 0
+
+    for u in range(len(H_Recover_Positive_Reshape_Threshed)):
+        for v in range(len(H_Recover_Positive_Reshape_Threshed[u])):
+            if H_Recover_Positive_Reshape_Threshed[u][v] == H_New_Positive_Ideal_Reshape_Threshed[u][v]:
+                accuracy_count_positive = accuracy_count_positive_threshed + 1
+    accuracy_matrix_threshed.append(accuracy_count_positive_threshed)
+
+    Save_File_Negative_URL_Threshed = "C:/Users/Dylan Luo/Documents/MMF data/MMF data/Recovered Images - Threshed/Recovered Image " + str(w + 1) + ".png"
+    Save_File_Negative_URl_Absolute_Path_Threshed = os.path.abspath(Save_File_Negative_URL_Threshed)
+    Save_File_Positive_URL_Threshed = "C:/Users/Dylan Luo/Documents/MMF data/MMF data/Recovered Images - Threshed/Recovered Image " + str(z + 1) + ".png"
+    Save_File_Positive_URl_Absolute_Path_Threshed = os.path.abspath(Save_File_Positive_URL_Threshed)
+    plt.subplot(121)
+    plt.title("Recovered Image (Negative)")
+    plt.imshow(H_Recover_Negative_Reshape_Threshed)
+    plt.subplot(122)
+    plt.title("Ideal Negative Image Input")
+    plt.imshow(H_New_Negative_Ideal_Reshape_Threshed)
+    plt.savefig(Save_File_Negative_URl_Absolute_Path_Threshed)
+
+    plt.subplot(121)
+    plt.title("Recovered Image (Positive)")
+    plt.imshow(H_Recover_Positive_Reshape_Threshed)
+    plt.subplot(122)
+    plt.title("Ideal Positive Image Input")
+    plt.imshow(H_New_Positive_Ideal_Reshape_Threshed)
+    plt.savefig(Save_File_Positive_URl_Absolute_Path_Threshed)
+
+accuracy_percentage_matrix_threshed = []
+
+for j in range(len(accuracy_matrix_threshed)):
+    percent_error = abs((int(accuracy_matrix_threshed[j]) - 256)/256) * 100
+    accuracy_percentage_matrix_threshed.append(percent_error)
+
+Save_Accuracy_URL_Threshed = "C:/Users/Dylan Luo/Documents/MMF data/MMF data/Recovered Images - Threshed/Image Accuracies (Threshed).txt"
+Save_Accuracy_URL_Absolute_Path_Threshed = os.path.abspath(Save_Accuracy_URL_Threshed)
+Accuracy_Write = open(Save_Accuracy_URL_Absolute_Path_Threshed, "a")
+Accuracy_Write.write(str(accuracy_matrix_threshed))
+Accuracy_Write.write("\n \n" + str(accuracy_percentage_matrix_threshed))
+Accuracy_Write.close()
+
 increment_for_loop_2 = 0
 accuracy_matrix = []
 
 for w in range(256):
     H_New_Split = np.hsplit(H_New, 256)
     H_New_Split_Column = H_New_Split[w]
-    #H_New_Positive_Ideal = (H_New_Split_Column + 1)/2
-    #H_New_Negative_Ideal = (-H_New_Split_Column + 1)/2
-    # Strange phenomenon that is happening with the ideal matrices: The negative algorithm seems to fit the positive ideal hadamard matrix, while the positive algorithm seems to fit the negative ideal hadamard matrix.
-    H_New_Positive_Ideal = (-H_New_Split_Column + 1)/2
-    H_New_Negative_Ideal = (H_New_Split_Column + 1)/2
+    H_New_Positive_Ideal = (H_New_Split_Column + 1)/2
+    H_New_Negative_Ideal = (-H_New_Split_Column + 1)/2
     H_New_Positive_Ideal_Reshape = np.reshape(H_New_Positive_Ideal, (16, 16))
     H_New_Negative_Ideal_Reshape = np.reshape(H_New_Negative_Ideal, (16, 16))
     w = w + increment_for_loop_2
@@ -202,14 +319,13 @@ for w in range(256):
     S_Recover_Negative_URL = "C:/Users/Dylan Luo/Documents/MMF data/MMF data/calibdata/" + MMF_Data_List[w]
     S_Recover_Negative_URL_Absolute_Path = os.path.abspath(S_Recover_Negative_URL)
     S_Recover_Negative = cv2.imread(S_Recover_Negative_URL_Absolute_Path, cv2.IMREAD_UNCHANGED)
+    S_Recover_Negative = S_Recover_Negative.astype("float64")
     S_Recover_Negative_Resize = cv2.resize(S_Recover_Negative, (100, 100), interpolation = cv2.INTER_LINEAR)
     S_Recover_Negative_Vector = np.reshape(S_Recover_Negative_Resize, (10000, 1))
 
     H_Recover_Negative = np.matmul(np.linalg.pinv(TM), S_Recover_Negative_Vector)
     np.seterr(invalid="ignore")
     H_Recover_Negative_Reshape = np.reshape(H_Recover_Negative, (16, 16))
-    H_Recover_Negative_Reshape[H_Recover_Negative_Reshape >= 0.34] = 1
-    H_Recover_Negative_Reshape[H_Recover_Negative_Reshape < 0.34] = 0
 
     accuracy_count_negative = 0
 
@@ -222,14 +338,13 @@ for w in range(256):
     S_Recover_Positive_URL = "C:/Users/Dylan Luo/Documents/MMF data/MMF data/calibdata/" + MMF_Data_List[z]
     S_Recover_Positive_URL_Absolute_Path = os.path.abspath(S_Recover_Positive_URL)
     S_Recover_Positive = cv2.imread(S_Recover_Positive_URL_Absolute_Path, cv2.IMREAD_UNCHANGED)
+    S_Recover_Positive = S_Recover_Positive.astype("float64")
     S_Recover_Positive_Resize = cv2.resize(S_Recover_Positive, (100, 100), interpolation = cv2.INTER_LINEAR)
     S_Recover_Positive_Vector = np.reshape(S_Recover_Positive_Resize, (10000, 1))
 
     H_Recover_Positive = np.matmul(np.linalg.pinv(TM), S_Recover_Positive_Vector)
     np.seterr(invalid="ignore")
     H_Recover_Positive_Reshape = np.reshape(H_Recover_Positive, (16, 16))
-    H_Recover_Positive_Reshape[H_Recover_Positive_Reshape >= 0.34] = 1
-    H_Recover_Positive_Reshape[H_Recover_Positive_Reshape < 0.34] = 0
 
     accuracy_count_positive = 0
 
@@ -238,6 +353,7 @@ for w in range(256):
             if H_Recover_Positive_Reshape[u][v] == H_New_Positive_Ideal_Reshape[u][v]:
                 accuracy_count_positive = accuracy_count_positive + 1
     accuracy_matrix.append(accuracy_count_positive)
+
     Save_File_Negative_URL = "C:/Users/Dylan Luo/Documents/MMF data/MMF data/Recovered Images/Recovered Image " + str(w + 1) + ".png"
     Save_File_Negative_URl_Absolute_Path = os.path.abspath(Save_File_Negative_URL)
     Save_File_Positive_URL = "C:/Users/Dylan Luo/Documents/MMF data/MMF data/Recovered Images/Recovered Image " + str(z + 1) + ".png"
@@ -257,19 +373,6 @@ for w in range(256):
     plt.title("Ideal Positive Image Input")
     plt.imshow(H_New_Positive_Ideal_Reshape)
     plt.savefig(Save_File_Positive_URl_Absolute_Path)
-
-    #Save_Accuracy_File_Negative_URL = "C:/Users/Dylan Luo/Documents/MMF data/MMF data/Image Accuracy/Accuracy of Image " + str(w + 1) + ".txt"
-    #Save_Accuracy_File_Negative_URL_Absolute_Path = os.path.abspath(Save_Accuracy_File_Negative_URL)
-    #Save_Accuracy_File_Positive_URL = "C:/Users/Dylan Luo/Documents/MMF data/MMF data/Image Accuracy/Accuracy of Image " + str(z + 1) + ".txt"
-    #Save_Accuracy_File_Positive_URL_Absolute_Path = os.path.abspath(Save_Accuracy_File_Positive_URL)
-
-    #Accuracy_Path_Negative = open(Save_Accuracy_File_Negative_URL_Absolute_Path, "a")
-    #Accuracy_Path_Negative.write(str(accuracy_count_negative))
-    #Accuracy_Path_Negative.close()
-
-    #Accuracy_Path_Positive = open(Save_Accuracy_File_Positive_URL_Absolute_Path, "a")
-    #Accuracy_Path_Positive.write(str(accuracy_count_positive))
-    #Accuracy_Path_Positive.close()
 
 accuracy_percentage_matrix = []
 
