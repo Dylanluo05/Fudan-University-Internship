@@ -87,7 +87,8 @@ S_Difference_Test_Vector = np.reshape(S_Difference_Test_Resize, (10000, 1))
 print("Difference of Speckle Pattern 3 and Speckle Pattern 4 \n", S_Difference_Test_Vector)
 print("Shape of Difference of Speckle Pattern 3 and Speckle Pattern 4 \n", S_Difference_Test_Vector.shape)
 
-#Load all speckle patterns, turn them into vectors, then append them all together to create a giant matrix with dimensions 10000 rows x 256 columns
+#Load all speckle patterns, turn them into vectors
+#Append them all together to create a giant matrix with dimensions 10000 rows x 256 columns
 
 S_Matrix = []
 increment_for_loop_1 = 0
