@@ -7,63 +7,63 @@ import scipy
 import os
 
 #Success Percentage Calculation
-"""
-percent_error_array = [100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0]
-success_array = []
 
-for q in range(len(percent_error_array)):
-    if percent_error_array[q] <= 5:
-        success_array.append(percent_error_array[q])
-print("Number of successful image recoveries (On the basis that the acceptable percent error is 5% and under) \n" + str(len(success_array)))
+#percent_error_array = [100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0]
+#success_array = []
 
-
-success_failure_array = []
-for p in range(len(percent_error_array)):
-    if percent_error_array[p] <= 5:
-        success_failure = "success"
-    else:
-        success_failure = "failure"
-    success_failure_array.append(success_failure)
-
-Success_Failure_URL = "C:/Users/Dylan Luo/Documents/MMF data/MMF data/Recovered Images/Image Accuracies.txt"
-Success_Failure_URL_Absolute_Path = os.path.abspath(Success_Failure_URL)
-Success_Failure_Write = open(Success_Failure_URL_Absolute_Path, "a")
-Success_Failure_Write.write("\n \n" + str(success_array))
-Success_Failure_Write.write("\n" + str(len(success_array)))
-Success_Failure_Write.write("\n \n" + str(success_failure_array))
-Success_Failure_Write.close()
-"""
-
-"""
-percent_error_array_threshed = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.390625, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.390625, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.390625, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
-success_array_threshed = []
-
-for q in range(len(percent_error_array_threshed)):
-    if percent_error_array_threshed[q] <= 5:
-        success_array_threshed.append(percent_error_array_threshed[q])
-print("Number of successful image recoveries (On the basis that the acceptable percent error is 5% and under) \n" + str(len(success_array_threshed)))
+#for q in range(len(percent_error_array)):
+    #if percent_error_array[q] <= 5:
+        #success_array.append(percent_error_array[q])
+#print("Number of successful image recoveries (On the basis that the acceptable percent error is 5% and under) \n" + str(len(success_array)))
 
 
-success_failure_array_threshed = []
-for p in range(len(percent_error_array_threshed)):
-    if percent_error_array_threshed[p] <= 5:
-        success_failure_threshed = "success"
-    else:
-        success_failure_threshed = "failure"
-    success_failure_array_threshed.append(success_failure_threshed)
+#success_failure_array = []
+#for p in range(len(percent_error_array)):
+    #if percent_error_array[p] <= 5:
+        #success_failure = "success"
+    #else:
+        #success_failure = "failure"
+    #success_failure_array.append(success_failure)
 
-Success_Failure_URL_Threshed = "C:/Users/Dylan Luo/Documents/MMF data/MMF data/Recovered Images - Threshed/Image Accuracies (Threshed).txt"
-Success_Failure_URL_Absolute_Path_Threshed = os.path.abspath(Success_Failure_URL_Threshed)
-Success_Failure_Write_Threshed = open(Success_Failure_URL_Absolute_Path_Threshed, "a")
-Success_Failure_Write_Threshed.write("\n \n" + str(success_array_threshed))
-Success_Failure_Write_Threshed.write("\n" + str(len(success_array_threshed)))
-Success_Failure_Write_Threshed.write("\n \n" + str(success_failure_array_threshed))
-Success_Failure_Write_Threshed.close()
-"""
+#Success_Failure_URL = "C:/Users/Dylan Luo/Documents/MMF data/MMF data/Recovered Images/Image Accuracies.txt"
+#Success_Failure_URL_Absolute_Path = os.path.abspath(Success_Failure_URL)
+#Success_Failure_Write = open(Success_Failure_URL_Absolute_Path, "a")
+#Success_Failure_Write.write("\n \n" + str(success_array))
+#Success_Failure_Write.write("\n" + str(len(success_array)))
+#Success_Failure_Write.write("\n \n" + str(success_failure_array))
+#Success_Failure_Write.close()
+
+
+
+#percent_error_array_threshed = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.390625, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.390625, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.390625, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+#success_array_threshed = []
+
+#for q in range(len(percent_error_array_threshed)):
+    #if percent_error_array_threshed[q] <= 5:
+        #success_array_threshed.append(percent_error_array_threshed[q])
+#print("Number of successful image recoveries (On the basis that the acceptable percent error is 5% and under) \n" + str(len(success_array_threshed)))
+
+
+#success_failure_array_threshed = []
+#for p in range(len(percent_error_array_threshed)):
+    #if percent_error_array_threshed[p] <= 5:
+        #success_failure_threshed = "success"
+    #else:
+        #success_failure_threshed = "failure"
+    #success_failure_array_threshed.append(success_failure_threshed)
+
+#Success_Failure_URL_Threshed = "C:/Users/Dylan Luo/Documents/MMF data/MMF data/Recovered Images - Threshed/Image Accuracies (Threshed).txt"
+#Success_Failure_URL_Absolute_Path_Threshed = os.path.abspath(Success_Failure_URL_Threshed)
+#Success_Failure_Write_Threshed = open(Success_Failure_URL_Absolute_Path_Threshed, "a")
+#Success_Failure_Write_Threshed.write("\n \n" + str(success_array_threshed))
+#Success_Failure_Write_Threshed.write("\n" + str(len(success_array_threshed)))
+#Success_Failure_Write_Threshed.write("\n \n" + str(success_failure_array_threshed))
+#Success_Failure_Write_Threshed.close()
+
 
 #Prove TM * Hln = Sln
 
-S_3_URL = "C:/Users/Dylan Luo/Documents/MMF data/MMF data/calibdata/000003.tif"
+S_3_URL = "C:/Users/Dylan Luo/Documents/MMF Data (Updated with Recovered Images) - Dylan Luo/MMF data/calibdata/000003.tif"
 S_3_URL_Absolute_Path = os.path.abspath(S_3_URL)
 S_3 = cv2.imread(S_3_URL_Absolute_Path, cv2.IMREAD_UNCHANGED)
 S_3 = S_3.astype("float64")
@@ -72,7 +72,7 @@ S_3_Vector = np.reshape(S_3_Resize, (10000, 1))
 print("Speckle Pattern 3 \n", S_3_Vector)
 print("Shape of Speckle Pattern 3 \n", S_3_Vector.shape)
 
-S_4_URL = "C:/Users/Dylan Luo/Documents/MMF data/MMF data/calibdata/000004.tif"
+S_4_URL = "C:/Users/Dylan Luo/Documents/MMF Data (Updated with Recovered Images) - Dylan Luo/MMF data/calibdata/000004.tif"
 S_4_URL_Absolute_Path = os.path.abspath(S_4_URL)
 S_4 = cv2.imread(S_4_URL_Absolute_Path, cv2.IMREAD_UNCHANGED)
 S_4 = S_4.astype("float64")
@@ -93,7 +93,7 @@ print("Shape of Difference of Speckle Pattern 3 and Speckle Pattern 4 \n", S_Dif
 S_Matrix = []
 increment_for_loop_1 = 0
 
-MMF_Data_URL = "C:/Users/Dylan Luo/Documents/MMF data/MMF data/calibdata/"
+MMF_Data_URL = "C:/Users/Dylan Luo/Documents/MMF Data (Updated with Recovered Images) - Dylan Luo/MMF data/calibdata/"
 MMF_Data_URL_Absolute_Path = os.path.abspath(MMF_Data_URL)
 MMF_Data_List = os.listdir(MMF_Data_URL_Absolute_Path)
 print("MMF List Data \n", MMF_Data_List)
@@ -102,12 +102,12 @@ for x in range(256):
     x = x + increment_for_loop_1
     increment_for_loop_1 = increment_for_loop_1 + 1
     y = x + 1
-    S_Negative_URL = "C:/Users/Dylan Luo/Documents/MMF data/MMF data/calibdata/" + MMF_Data_List[x]
+    S_Negative_URL = "C:/Users/Dylan Luo/Documents/MMF Data (Updated with Recovered Images) - Dylan Luo/MMF data/calibdata/" + MMF_Data_List[x]
     S_Negative_URL_Absolute_Path = os.path.abspath(S_Negative_URL)
     S_Negative = cv2.imread(S_Negative_URL_Absolute_Path, cv2.IMREAD_UNCHANGED)
     S_Negative = S_Negative.astype("float64")
 
-    S_Positive_URL = "C:/Users/Dylan Luo/Documents/MMF data/MMF data/calibdata/" + MMF_Data_List[y]
+    S_Positive_URL = "C:/Users/Dylan Luo/Documents/MMF Data (Updated with Recovered Images) - Dylan Luo/MMF data/calibdata/" + MMF_Data_List[y]
     S_Positive_URL_Absolute_Path = os.path.abspath(S_Positive_URL)
     S_Positive = cv2.imread(S_Positive_URL_Absolute_Path, cv2.IMREAD_UNCHANGED)
     S_Positive = S_Positive.astype("float64")
@@ -147,7 +147,7 @@ print("Shape of Transmission Matrix \n", TM.shape)
 
 #Finding the psuedo-inverse of TM then multiplying it with a speckle pattern is faster than dividing the transmission matrix from the speckle pattern.
 #The different algorithm run times for np.matmul and np.divide are proof of the statement above.
-S_Recover_1_URL = "C:/Users/Dylan Luo/Documents/MMF data/MMF data/calibdata/000025.tif"
+S_Recover_1_URL = "C:/Users/Dylan Luo/Documents/MMF Data (Updated with Recovered Images) - Dylan Luo/MMF data/calibdata/000025.tif"
 S_Recover_1_URL_Absolute_Path = os.path.abspath(S_Recover_1_URL)
 S_Recover_1 = cv2.imread(S_Recover_1_URL_Absolute_Path, cv2.IMREAD_UNCHANGED)
 S_Recover_1 = S_Recover_1.astype("float64")
@@ -161,7 +161,7 @@ H_Recover_1_Reshape[H_Recover_1_Reshape < 0.50] = 0
 print("Example Image Recovery 1 \n", H_Recover_1_Reshape)
 print("Shape of Recovered Image 1 \n", H_Recover_1_Reshape.shape)
 
-S_Recover_2_URL = "C:/Users/Dylan Luo/Documents/MMF data/MMF data/calibdata/000026.tif"
+S_Recover_2_URL = "C:/Users/Dylan Luo/Documents/MMF Data (Updated with Recovered Images) - Dylan Luo/MMF data/calibdata/000026.tif"
 S_Recover_2_URL_Absolute_Path = os.path.abspath(S_Recover_2_URL)
 S_Recover_2 = cv2.imread(S_Recover_2_URL_Absolute_Path, cv2.IMREAD_UNCHANGED)
 S_Recover_2 = S_Recover_2.astype("float64")
@@ -229,7 +229,7 @@ for w in range(256):
     w = w + increment_for_loop_3
     increment_for_loop_3 = increment_for_loop_3 + 1
     z = w + 1
-    S_Recover_Negative_URL_Threshed = "C:/Users/Dylan Luo/Documents/MMF data/MMF data/calibdata/" + MMF_Data_List[w]
+    S_Recover_Negative_URL_Threshed = "C:/Users/Dylan Luo/Documents/MMF Data (Updated with Recovered Images) - Dylan Luo/MMF data/calibdata/" + MMF_Data_List[w]
     S_Recover_Negative_URL_Absolute_Path_Threshed = os.path.abspath(S_Recover_Negative_URL_Threshed)
     S_Recover_Negative_Threshed = cv2.imread(S_Recover_Negative_URL_Absolute_Path_Threshed, cv2.IMREAD_UNCHANGED)
     S_Recover_Negative_Threshed = S_Recover_Negative_Threshed.astype("float64")
@@ -250,7 +250,7 @@ for w in range(256):
                 accuracy_count_negative_threshed = accuracy_count_negative_threshed + 1
     accuracy_matrix_threshed.append(accuracy_count_negative_threshed)
 
-    S_Recover_Positive_URL_Threshed = "C:/Users/Dylan Luo/Documents/MMF data/MMF data/calibdata/" + MMF_Data_List[z]
+    S_Recover_Positive_URL_Threshed = "C:/Users/Dylan Luo/Documents/MMF Data (Updated with Recovered Images) - Dylan Luo/MMF data/calibdata/" + MMF_Data_List[z]
     S_Recover_Positive_URL_Absolute_Path_Threshed = os.path.abspath(S_Recover_Positive_URL_Threshed)
     S_Recover_Positive_Threshed = cv2.imread(S_Recover_Positive_URL_Absolute_Path_Threshed, cv2.IMREAD_UNCHANGED)
     S_Recover_Positive_Threshed = S_Recover_Positive_Threshed.astype("float64")
@@ -271,9 +271,9 @@ for w in range(256):
                 accuracy_count_positive_threshed = accuracy_count_positive_threshed + 1
     accuracy_matrix_threshed.append(accuracy_count_positive_threshed)
 
-    Save_File_Negative_URL_Threshed = "C:/Users/Dylan Luo/Documents/MMF data/MMF data/Recovered Images - Threshed/Recovered Image " + str(w + 1) + ".png"
+    Save_File_Negative_URL_Threshed = "C:/Users/Dylan Luo/Documents/MMF Data (Updated with Recovered Images) - Dylan Luo/MMF data/Recovered Images - Threshed/Recovered Image " + str(w + 1) + ".png"
     Save_File_Negative_URl_Absolute_Path_Threshed = os.path.abspath(Save_File_Negative_URL_Threshed)
-    Save_File_Positive_URL_Threshed = "C:/Users/Dylan Luo/Documents/MMF data/MMF data/Recovered Images - Threshed/Recovered Image " + str(z + 1) + ".png"
+    Save_File_Positive_URL_Threshed = "C:/Users/Dylan Luo/Documents/MMF Data (Updated with Recovered Images) - Dylan Luo/MMF data/Recovered Images - Threshed/Recovered Image " + str(z + 1) + ".png"
     Save_File_Positive_URl_Absolute_Path_Threshed = os.path.abspath(Save_File_Positive_URL_Threshed)
     plt.subplot(121)
     plt.title("Recovered Image (Negative)")
@@ -297,7 +297,7 @@ for j in range(len(accuracy_matrix_threshed)):
     percent_error = abs((int(accuracy_matrix_threshed[j]) - 256)/256) * 100
     accuracy_percentage_matrix_threshed.append(percent_error)
 
-Save_Accuracy_URL_Threshed = "C:/Users/Dylan Luo/Documents/MMF data/MMF data/Recovered Images - Threshed/Image Accuracies (Threshed).txt"
+Save_Accuracy_URL_Threshed = "C:/Users/Dylan Luo/Documents/MMF Data (Updated with Recovered Images) - Dylan Luo/MMF data/Recovered Images - Threshed/Image Accuracies (Threshed).txt"
 Save_Accuracy_URL_Absolute_Path_Threshed = os.path.abspath(Save_Accuracy_URL_Threshed)
 Accuracy_Write = open(Save_Accuracy_URL_Absolute_Path_Threshed, "a")
 Accuracy_Write.write(str(accuracy_matrix_threshed))
@@ -317,7 +317,7 @@ for w in range(256):
     w = w + increment_for_loop_2
     increment_for_loop_2 = increment_for_loop_2 + 1
     z = w + 1
-    S_Recover_Negative_URL = "C:/Users/Dylan Luo/Documents/MMF data/MMF data/calibdata/" + MMF_Data_List[w]
+    S_Recover_Negative_URL = "C:/Users/Dylan Luo/Documents/MMF Data (Updated with Recovered Images) - Dylan Luo/MMF data/calibdata/" + MMF_Data_List[w]
     S_Recover_Negative_URL_Absolute_Path = os.path.abspath(S_Recover_Negative_URL)
     S_Recover_Negative = cv2.imread(S_Recover_Negative_URL_Absolute_Path, cv2.IMREAD_UNCHANGED)
     S_Recover_Negative = S_Recover_Negative.astype("float64")
@@ -336,7 +336,7 @@ for w in range(256):
                 accuracy_count_negative = accuracy_count_negative + 1
     accuracy_matrix.append(accuracy_count_negative)
 
-    S_Recover_Positive_URL = "C:/Users/Dylan Luo/Documents/MMF data/MMF data/calibdata/" + MMF_Data_List[z]
+    S_Recover_Positive_URL = "C:/Users/Dylan Luo/Documents/MMF Data (Updated with Recovered Images) - Dylan Luo/MMF data/calibdata/" + MMF_Data_List[z]
     S_Recover_Positive_URL_Absolute_Path = os.path.abspath(S_Recover_Positive_URL)
     S_Recover_Positive = cv2.imread(S_Recover_Positive_URL_Absolute_Path, cv2.IMREAD_UNCHANGED)
     S_Recover_Positive = S_Recover_Positive.astype("float64")
@@ -355,9 +355,9 @@ for w in range(256):
                 accuracy_count_positive = accuracy_count_positive + 1
     accuracy_matrix.append(accuracy_count_positive)
 
-    Save_File_Negative_URL = "C:/Users/Dylan Luo/Documents/MMF data/MMF data/Recovered Images/Recovered Image " + str(w + 1) + ".png"
+    Save_File_Negative_URL = "C:/Users/Dylan Luo/Documents/MMF Data (Updated with Recovered Images) - Dylan Luo/MMF data/Recovered Images/Recovered Image " + str(w + 1) + ".png"
     Save_File_Negative_URl_Absolute_Path = os.path.abspath(Save_File_Negative_URL)
-    Save_File_Positive_URL = "C:/Users/Dylan Luo/Documents/MMF data/MMF data/Recovered Images/Recovered Image " + str(z + 1) + ".png"
+    Save_File_Positive_URL = "C:/Users/Dylan Luo/Documents/MMF Data (Updated with Recovered Images) - Dylan Luo/MMF data/Recovered Images/Recovered Image " + str(z + 1) + ".png"
     Save_File_Positive_URl_Absolute_Path = os.path.abspath(Save_File_Positive_URL)
     plt.subplot(121)
     plt.title("Recovered Image (Negative)")
@@ -381,7 +381,7 @@ for j in range(len(accuracy_matrix)):
     percent_error = abs((int(accuracy_matrix[j]) - 256)/256) * 100
     accuracy_percentage_matrix.append(percent_error)
 
-Save_Accuracy_URL = "C:/Users/Dylan Luo/Documents/MMF data/MMF data/Recovered Images/Image Accuracies.txt"
+Save_Accuracy_URL = "C:/Users/Dylan Luo/Documents/MMF Data (Updated with Recovered Images) - Dylan Luo/MMF data/Recovered Images/Image Accuracies.txt"
 Save_Accuracy_URL_Absolute_Path = os.path.abspath(Save_Accuracy_URL)
 Accuracy_Write = open(Save_Accuracy_URL_Absolute_Path, "a")
 Accuracy_Write.write(str(accuracy_matrix))
