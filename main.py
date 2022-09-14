@@ -195,6 +195,9 @@ H_New_Test_1_Negative_Ideal_Reshape = np.reshape(H_New_Test_1_Negative_Ideal, (1
 print("Positive Ideal Hadamard Matrix \n", H_New_Test_1_Positive_Ideal_Reshape)
 print("Shape of Positive Ideal Hadamard Matrix \n", H_New_Test_1_Positive_Ideal_Reshape.shape)
 
+print("Negative Ideal Hadamard Matrix \n", H_New_Test_1_Negative_Ideal_Reshape)
+print("Shape of Negative Ideal Hadamard Matrix \n", H_New_Test_1_Negative_Ideal_Reshape.shape)
+
 #Plot the recovered image and the ideal hadamard matrix input sample using matplot
 
 #Matplot allows the output to be more user-friendly
@@ -214,6 +217,10 @@ plt.title("Ideal Positive Image Input")
 plt.imshow(H_New_Test_1_Positive_Ideal_Reshape)
 plt.show()
 
+plt.subplot(121)
+plt.title("Transmission Matrix Visualized")
+plt.imshow(TM)
+plt.show()
 # Image Recovery for all the files in the MMF Data Sample Folder
 
 increment_for_loop_3 = 0
