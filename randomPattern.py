@@ -68,8 +68,8 @@ for i in range(len(H_Recover_Test_1_Reshape)):
 H_Recover_Test_1_Average = float(H_Recover_Test_1_Sum)/float(H_Recover_Test_1_Count)
 
 H_Recover_Test_1_Reshape_Threshed = H_Recover_Test_1_Reshape.copy()
-H_Recover_Test_1_Reshape_Threshed[H_Recover_Test_1_Reshape_Threshed >= -0.004] = 1
-H_Recover_Test_1_Reshape_Threshed[H_Recover_Test_1_Reshape_Threshed < -0.004] = 0
+H_Recover_Test_1_Reshape_Threshed[H_Recover_Test_1_Reshape_Threshed >= 4.251965770569743e-05] = 1
+H_Recover_Test_1_Reshape_Threshed[H_Recover_Test_1_Reshape_Threshed < 4.251965770569743e-05] = 0
 print("Test Image Recovery 1 without Thresh \n", H_Recover_Test_1_Reshape)
 print("Shape of Test Image Recovery without Thresh \n", H_Recover_Test_1_Reshape.shape)
 print("Test Image Recovery 1 with Thresh \n", H_Recover_Test_1_Reshape_Threshed)
@@ -95,8 +95,8 @@ for i in range(len(H_Recover_Test_2_Reshape)):
 H_Recover_Test_2_Average = float(H_Recover_Test_2_Sum)/float(H_Recover_Test_2_Count)
 
 H_Recover_Test_2_Reshape_Threshed = H_Recover_Test_2_Reshape.copy()
-H_Recover_Test_2_Reshape_Threshed[H_Recover_Test_2_Reshape_Threshed >= -0.001] = 1
-H_Recover_Test_2_Reshape_Threshed[H_Recover_Test_2_Reshape_Threshed < -0.001] = 0
+H_Recover_Test_2_Reshape_Threshed[H_Recover_Test_2_Reshape_Threshed >= 4.251965770569743e-05] = 1
+H_Recover_Test_2_Reshape_Threshed[H_Recover_Test_2_Reshape_Threshed < 4.251965770569743e-05] = 0
 print("Test Image Recovery 2 without Thresh \n", H_Recover_Test_2_Reshape)
 print("Shape of Test Image Recovery 2 without Thresh \n", H_Recover_Test_2_Reshape.shape)
 print("Test Image Recovery 2 with Thresh \n", H_Recover_Test_2_Reshape_Threshed)
@@ -118,6 +118,41 @@ plt.subplot(122)
 plt.title("Recovered Test Image 2 \n with Thresh")
 plt.imshow(H_Recover_Test_2_Reshape_Threshed)
 plt.show()
+
+
+H_1_Matrix = []
+
+for k in range(100):
+    R_1_URL = "C:/Users/Dylan Luo/Documents/MMF Data (Updated with Recovered Images) - Dylan Luo/MMF data/randomPattern100/" + Random_Pattern_Data_List[k]
+    R_1_URL_Absolute_Path = os.path.abspath(R_1_URL)
+    R_1 = cv2.imread(R_1_URL_Absolute_Path, cv2.IMREAD_UNCHANGED)
+    R_1 = R_1.astype("float64")
+    R_1_Resize = cv2.resize(R_1, (100, 100), interpolation = cv2.INTER_LINEAR)
+    R_1_Vector = np.reshape(R_1_Resize, (10000, 1))
+    np.seterr(invalid="ignore")
+    H_1 = np.matmul(np.linalg.pinv(TM_New), R_1_Vector)
+    H_1_Vector = np.reshape(H_1, (256, 1))
+    if k == 0:
+        H_1_Matrix = H_1_Vector
+    else:
+        H_1_Matrix = np.column_stack((H_1_Matrix, H_1_Vector))
+
+H_1_Matrix_New = np.array(H_1_Matrix)
+print("Combined Test Matrix \n", H_1_Matrix_New)
+print("Shape of Test Combined Test Matrix", H_1_Matrix_New.shape)
+
+H_1_Matrix_New_Edit = np.matmul(H_1_Matrix_New, Random_Pattern)
+
+Save_H_1_URL = "C:/Users/Dylan Luo/Documents/MMF Data (Updated with Recovered Images) - Dylan Luo/MMF data/Recovered Random Patterns/Combined Test Image.tif"
+Save_H_1_URL_Absolute_Path = os.path.abspath(Save_H_1_URL)
+
+plt.subplot(121)
+plt.title("Test Combined Matrix")
+plt.imshow(H_1_Matrix_New)
+plt.subplot(122)
+plt.title("Edited Test Combined Matrix")
+plt.imshow(H_1_Matrix_New_Edit)
+plt.savefig(Save_H_1_URL_Absolute_Path)
 
 H_Recover_Average_List = []
 
@@ -142,8 +177,8 @@ for w in range(100):
     H_Recover_Average_List.append(H_Recover_Average)
 
     H_Recover_Reshape_Threshed = H_Recover_Reshape.copy()
-    H_Recover_Reshape_Threshed[H_Recover_Reshape_Threshed >= -0.001] = 1
-    H_Recover_Reshape_Threshed[H_Recover_Reshape_Threshed < -0.001] = 0
+    H_Recover_Reshape_Threshed[H_Recover_Reshape_Threshed >= 4.251965770569743e-05] = 1
+    H_Recover_Reshape_Threshed[H_Recover_Reshape_Threshed < 4.251965770569743e-05] = 0
 
     Save_H_URL = "C:/Users/Dylan Luo/Documents/MMF Data (Updated with Recovered Images) - Dylan Luo/MMF data/Recovered Random Patterns/" + Random_Pattern_Data_List[w]
     Save_H_URL_Absolute_Path = os.path.abspath(Save_H_URL)
@@ -168,6 +203,8 @@ Average_Write = open(Save_Average_URL_Absolute_Path, "a")
 Average_Write.write(str(H_Recover_Average_List))
 Average_Write.write("\n \n" + str(H_Recover_Average_Overall))
 Average_Write.close()
+
+
 
 
 
