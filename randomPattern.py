@@ -143,8 +143,29 @@ print("Shape of Test Combined Test Matrix", H_1_Matrix_New.shape)
 
 H_1_Matrix_New_Edit = np.matmul(H_1_Matrix_New, Random_Pattern)
 
+print("Reshaped Combined Test Matrix \n", H_1_Matrix_New_Edit)
+print("Shape of Reshaped Combined Test Matrix \n", H_1_Matrix_New_Edit.shape)
+
+H_1_Matrix_New_Threshed = H_1_Matrix_New.copy()
+H_1_Matrix_New_Threshed[H_1_Matrix_New_Threshed >= 4.251965770569743e-05] = 1
+H_1_Matrix_New_Threshed[H_1_Matrix_New_Threshed < 4.251965770569743e-05] = 0
+
+print("Threshed Combined Test Matrix \n", H_1_Matrix_New_Threshed)
+print("Shape of Threshed Combined Test Matrix", H_1_Matrix_New_Threshed.shape)
+
+H_1_Matrix_New_Edit_Threshed = H_1_Matrix_New_Edit.copy()
+H_1_Matrix_New_Edit_Threshed[H_1_Matrix_New_Edit_Threshed >= 4.251965770569743e-05] = 1
+H_1_Matrix_New_Edit_Threshed[H_1_Matrix_New_Edit_Threshed < 4.251965770569743e-05] = 0
+
+print("Threshed Reshaped Combined Test Matrix \n", H_1_Matrix_New_Edit_Threshed)
+print("Shape of Threshed Reshaped Combined Test Matrix", H_1_Matrix_New_Edit_Threshed.shape)
+
 Save_H_1_URL = "C:/Users/Dylan Luo/Documents/MMF Data (Updated with Recovered Images) - Dylan Luo/MMF data/Recovered Random Patterns/Combined Test Image.tif"
 Save_H_1_URL_Absolute_Path = os.path.abspath(Save_H_1_URL)
+
+Save_H_2_URL = "C:/Users/Dylan Luo/Documents/MMF Data (Updated with Recovered Images) - Dylan Luo/MMF data/Recovered Random Patterns/Combined Test Image (Threshed).tif"
+Save_H_2_URL_Absolute_Path = os.path.abspath(Save_H_2_URL)
+
 
 plt.subplot(121)
 plt.title("Test Combined Matrix")
@@ -153,6 +174,14 @@ plt.subplot(122)
 plt.title("Edited Test Combined Matrix")
 plt.imshow(H_1_Matrix_New_Edit)
 plt.savefig(Save_H_1_URL_Absolute_Path)
+
+plt.subplot(121)
+plt.title("Threshed Test \n Combined Matrix")
+plt.imshow(H_1_Matrix_New_Threshed)
+plt.subplot(122)
+plt.title("Threshed Edited Test \n Combined Matrix")
+plt.imshow(H_1_Matrix_New_Edit_Threshed)
+plt.savefig(Save_H_2_URL_Absolute_Path)
 
 H_Recover_Average_List = []
 
@@ -184,10 +213,10 @@ for w in range(100):
     Save_H_URL_Absolute_Path = os.path.abspath(Save_H_URL)
 
     plt.subplot(121)
-    plt.title("Recovered Random Pattern without Thresh")
+    plt.title("Recovered Random Pattern \n without Thresh")
     plt.imshow(H_Recover_Reshape)
     plt.subplot(122)
-    plt.title("Recovered Random Pattern with Thresh")
+    plt.title("Recovered Random Pattern \n with Thresh")
     plt.imshow(H_Recover_Reshape_Threshed)
     plt.savefig(Save_H_URL_Absolute_Path)
 
