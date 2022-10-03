@@ -112,10 +112,6 @@ for x in range(256):
     S_Positive = cv2.imread(S_Positive_URL_Absolute_Path, cv2.IMREAD_UNCHANGED)
     S_Positive = S_Positive.astype("float64")
 
-    #S_Negative_Resize = cv2.resize(S_Negative, (100, 100), interpolation = cv2.INTER_LINEAR)
-    #S_Positive_Resize = cv2.resize(S_Positive, (100, 100), interpolation = cv2.INTER_LINEAR)
-    #S_Difference = np.subtract(S_Positive_Resize, S_Negative_Resize)
-    #S_Vector = np.reshape(S_Difference, (10000, 1))
     S_Difference = np.subtract(S_Positive, S_Negative)
     S_Resize = cv2.resize(S_Difference, (100, 100), interpolation = cv2.INTER_LINEAR)
     S_Vector = np.reshape(S_Resize, (10000, 1))
@@ -183,6 +179,33 @@ H_Recover_Difference_1 = np.matmul(np.linalg.pinv(TM), S_Recover_Difference_1_Ve
 H_Recover_Difference_1_Reshape = np.reshape(H_Recover_Difference_1, (16, 16))
 print("Example Difference of Two Image Recoveries 1 \n", H_Recover_Difference_1_Reshape)
 print("Shape of Difference of Two Recovered Images 1 \n", H_Recover_Difference_1_Reshape.shape)
+
+R_Recover_Test_2_URL = "C:/Users/Dylan Luo/Documents/MMF Data (Updated with Recovered Images) - Dylan Luo/MMF data/randomPattern100/000004.tif"
+R_Recover_Test_2_URL_Absolute_Path = os.path.abspath(R_Recover_Test_2_URL)
+R_Recover_Test_2 = cv2.imread(R_Recover_Test_2_URL_Absolute_Path, cv2.IMREAD_UNCHANGED)
+R_Recover_Test_2 = R_Recover_Test_2.astype("float64")
+R_Recover_Test_2_Resize = cv2.resize(R_Recover_Test_2, (100, 100), interpolation = cv2.INTER_LINEAR)
+R_Recover_Test_2_Vector = np.reshape(R_Recover_Test_2_Resize, (10000, 1))
+np.seterr(invalid="ignore")
+H_Recover_Test_2 = np.matmul(np.linalg.pinv(TM), R_Recover_Test_2_Vector)
+H_Recover_Test_2_Reshape = np.reshape(H_Recover_Test_2, (16, 16))
+H_Recover_Test_2_Reshape[H_Recover_Test_2_Reshape >= 0.5] = 1
+H_Recover_Test_2_Reshape[H_Recover_Test_2_Reshape < 0.5] = 0
+
+Random_Pattern_URL = "C:/Users/Dylan Luo/Documents/MMF Data (Updated with Recovered Images) - Dylan Luo/MMF data/randomPattern100/randomPattern100.npy"
+Random_Pattern_URL_Absolute_Path = os.path.abspath(Random_Pattern_URL)
+Random_Pattern = np.load(Random_Pattern_URL_Absolute_Path)
+Random_Pattern_4 = Random_Pattern[3]
+Random_Pattern_4_Reshape = np.reshape(Random_Pattern_4, (16, 16))
+
+plt.subplot(121)
+plt.title("Test")
+plt.imshow(H_Recover_Test_2_Reshape)
+plt.subplot(122)
+plt.title("Test Random Pattern")
+plt.imshow(Random_Pattern_4_Reshape)
+plt.show()
+
 
 #Finding an ideal image matrix input
 H_New_Split_Test = np.hsplit(H_New, 256)
